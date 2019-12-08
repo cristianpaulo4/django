@@ -1,0 +1,74 @@
+{% extends 'pwII/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div>
+        
+<style>
+input{
+    width: 100%;
+}
+</style>
+
+<h1>Alterar consulta</h1>
+
+<form  method="POST" action="{% url 'confirmar_alteracoes' %}" >
+    {% csrf_token %}            
+    <input type="hidden" value="{{user.id}}" name="cliete_id"> 
+    <input type="hidden" value="{{consulta.id}}" name="consulta_id"> 
+    <br>
+    Data da consulta
+    <br>   
+    <input type="date" name="dataConsulta" value="{{data}}">
+    
+    <br>
+    Hora da consulta
+    <br>
+    <input type="time" name="horaConsulta" max="18:00" min="8:00" value="{{hora}}">
+    <br>
+    Procedimento
+    <br>
+    <select name="procedimento">
+        <option value="{{ consulta.procedimento.id}}" selected>{{consulta.procedimento}}</option>
+        {% for op in proce%}
+        {%if op.id != consulta.procedimento.id%}
+        <option value="{{op.id}}">
+            {{ op }}
+        </option>
+        {%endif%}
+        {%endfor%}
+    </select>
+
+
+    <br>
+    Dentista
+    <br>
+    <select name="dentista">
+        <option value="{{consulta.dentista.id}}" selected >{{consulta.dentista}}</option>
+
+        {% for opDent in dentista%}
+        {%if opDent.id != consulta.dentista.id%}
+        <option value="{{opDent.id}}">
+             {{ opDent }}
+        </option>
+        {%endif%}
+        {%endfor%}
+        
+    </select>
+              
+  
+    <br>
+    <br> 
+    <input type="submit" class="btn btn-info" value="Salvar">
+</form>
+    
+
+
+</div>
+
+
+
+
+
+{% endblock %}

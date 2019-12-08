@@ -1,0 +1,54 @@
+{% extends 'pwII/baseLogin.html' %}
+{% load static %}
+{% block content %}
+
+
+<div>
+    <h1>Endereço</h1>
+    
+<style>
+input{
+    width: 100%;
+}
+</style>
+    <form  method="POST" action="{% url 'cadEnd' %}" >
+        {% csrf_token %}
+            
+        <input type="hidden" value="{{user.id}}" name="user">        
+        Estado
+        <br>        
+        {{ form.estado }}
+        <br>
+        Cidade 
+        <br>
+        {{ form.cidade }}
+        <br>
+        Bairro 
+        <br>
+        {{ form.bairro }}    
+        <br>
+        Logradouro
+        <br>
+        {{ form.logradouro }}
+        <br>
+        Numero
+        <br>
+        {{ form.numero }}      
+
+      
+       
+      
+        <br>
+        <br> 
+        <input type="submit" class="btn btn-info">
+    </form>
+
+
+
+</div>
+
+
+
+
+
+{% endblock %}

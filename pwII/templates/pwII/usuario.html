@@ -1,0 +1,43 @@
+{% extends 'pwII/baseLogin.html' %}
+{% load static %}
+{% block content %}
+
+
+<div>
+             
+    <style>
+    input{
+        width: 100%;
+        
+        
+    }
+    </style>
+        <form  method="POST" >
+            {% csrf_token %}
+            
+            
+            Usuario
+            <br>        
+            {{ form.username }}
+            <br>
+            E-mail
+            <br>        
+            {{ form.email}}
+            <br>
+            Senha
+            <br>        
+            <input type="password" name="password" >            
+            <br>
+            <br>
+        
+            
+            
+            <input type="submit" class="btn btn-info">
+        </form>
+    
+    
+    
+    </div>
+    
+
+{% endblock %}

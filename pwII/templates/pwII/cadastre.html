@@ -1,0 +1,43 @@
+{% extends 'pwII/baseLogin.html' %}
+{% load static %}
+{% block content %}
+
+<div>
+    <h1>Cadastre-se</h1>
+    
+<style>
+input{
+    width: 100%;
+}
+</style>
+    <form  method="POST" action="{% url 'cadastrar' %}" >
+        {% csrf_token %}
+        
+        <input type="hidden" value="{{user.id}}" name="user">        
+        Nome
+        <br>        
+        {{ form.nome }}
+        <br>
+        Cpf 
+        <br>
+        {{ form.cpf }}
+        <br>
+        Idade 
+        <br>
+        {{ form.idade }}       
+      
+       
+      
+        <br>
+        <br> 
+        <input type="submit" class="btn btn-info">
+    </form>
+
+
+
+</div>
+
+
+
+
+{% endblock %}

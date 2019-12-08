@@ -1,0 +1,43 @@
+{% extends 'pwII/base.html' %}
+
+ {% block content %}
+ <h2>Consultas marcadas</h2>
+  <div class="table-responsive">
+            <table class="table table-striped table-sm">
+              <thead>
+                <tr>                 
+                  <th>Data</th>
+                  <th>Horário</th>
+                  <th>Valor</th>
+                  <th>Procedimento</th>
+                  <th>Dentista</th>
+                  <th>Situação</th>
+                  <th>Editar</th>
+                  
+                </tr>
+              </thead>
+
+              {% for consult in consulta %}
+              <tbody>
+                <tr>
+                    <td>{{consult.dataConsulta}}</td>
+                    <td>{{consult.horaConsulta}}</td>
+                    <td>{{consult.procedimento.valor}}</td>
+                    <td>{{consult.procedimento}}</td>
+                    <td>{{consult.dentista}}</td>               
+                    <td><a href="{% url 'cancelar_consulta' pk=consult.pk%}"><button style="width: 130px;" class="btn btn-danger">Cancelar</button></a></td>
+                    <td><a href="{% url 'alterar_consulta' pk=consult.pk%}"><button style="width: 130px;" class="btn btn-primary">Editar</button></a></td>
+
+                  
+                </tr>                
+              </tbody>
+              {% endfor %}
+
+              
+
+
+
+            </table>
+         
+
+{% endblock %}

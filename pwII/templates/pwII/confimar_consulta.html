@@ -1,0 +1,52 @@
+{% extends 'pwII/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div>
+    
+    
+<style>
+input{
+    width: 100%;
+}
+</style>
+
+<h1>Marcar consulta </h1>
+    <h2>Valor da consulta: {{procedimento.valor}}</h2>
+    <form  method="POST" action="{% url 'salvar_consulta' %}" >
+        {% csrf_token %}            
+        <input type="hidden" value="{{user.id}}" name="cliete_id"> 
+        <br>
+        Data da consulta
+        <br>
+        <input type="hidden" value="{{dataConsulta}}" name="dataConsulta">
+        <input type="date" disabled name="sd" value="{{ dataConsulta }}">
+        <br>
+        Hora da consulta
+        <br>
+        <input type="hidden"   name="horaConsulta" value="{{ horaConsulta }}">
+        <input type="time"  disabled name="df" value="{{ horaConsulta }}">
+        <br>
+        Procedimento
+        <br>
+        <input type="hidden" value="{{procedimento.pk}}" name="procedimento">
+        <input type="text" disabled  name="sad" value="{{ procedimento }}">
+        <br>
+        dentista
+        <br>
+        <input type="hidden" value="{{dentista.id}}" name="dentista">
+        <input type="text" disabled name="ads" value="{{ dentista }}">
+    
+
+              
+      
+        <br>
+        <br> 
+        
+        <input onclick="myFunction()" type="submit" class="btn btn-info" value="Confirma">
+    </form>
+
+</div>
+
+{% endblock %}

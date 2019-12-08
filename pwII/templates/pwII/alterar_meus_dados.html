@@ -1,0 +1,104 @@
+{% extends 'pwII/base.html' %}
+{% load static %}
+{% block content %}
+
+<h1>Alterar Dados</h1>
+
+<div>
+    
+<style>
+input{
+    width: 100%;
+}
+</style>
+
+<form method="POST" action="{% url 'salvar_meus_dados' %}">
+    {% csrf_token %}
+    <input type="hidden" value="{{user.id}}" name="cliete_id">  
+    
+	Login:
+	<br>
+	Usuario
+        <br>       
+        <input name="username" type="text" value="{{user_dados_cliente.user.username}}">
+        <br>
+        e-mail 
+        <br>
+        <input name="email" type="text" value="{{user_dados_cliente.user.email}}">        
+        <br>
+        Senha
+        <br>
+        <input name="senha" type="text" value="{{user_dados_cliente.user.password}}">
+        <br>        
+        <br>
+        <br>	
+     
+       
+    Usuario:
+    	<br>
+    	Nome 
+        <br>
+        <input name="nome" type="text" value="{{user_dados_cliente.nome}}">    	
+    	<br>
+    	Cpf
+        <br>
+        <input name="cpf" type="text" value="{{user_dados_cliente.cpf}}">
+    	
+        <br>
+        Idade
+        <br>	
+        <input name="idade" type="text" value="{{user_dados_cliente.idade}}">
+     
+        <br>
+        <br>
+        <br>
+
+
+    Endereço:
+    	<br>
+    	Estado
+        <br>
+        <input name="estado" type="text" value="{{user_dados_cliente.endereco.estado}}">
+    
+    	<br>
+    	Cidade
+        <br>
+        <input name="cidade" type="text" value="{{user_dados_cliente.endereco.cidade}}">
+
+    	<br>
+        Rua
+        <input name="logradouro" type="text" value="{{user_dados_cliente.endereco.logradouro}}">
+    
+    	<br>
+    	Numero
+        <br>
+        <input name="numero" type="text" value="{{user_dados_cliente.endereco.numero}}">
+    
+
+    	<br>
+        <br>	
+        <br>
+
+    	
+
+
+	<input onclick="dados_alterados()" type="submit" class="btn btn-info">
+</form>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
